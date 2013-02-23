@@ -3,27 +3,31 @@
 
 void testApp::setup(){
 
-	ofSetFrameRate(4);
 	ofEnableAlphaBlending();
 	ofBackground(22);
+	mousePressed(0,0,0);
 }
 
 
 void testApp::update(){
-
+	ok = solver.solveElipse(pts[0], pts[1], pts[2], pts[3], pts[4]);
 }
 
-
-void testApp::draw(){
-
-	vector<ofVec2f> pts;
+void testApp::mousePressed( int x, int y, int button ){
+	pts.clear();
 	for(int i = 0; i < 5; i++){
 		int rx = 200;
 		int ry = 200;
 		pts.push_back( ofVec2f( ofRandom(-rx, rx), ofRandom(-ry, ry)) );
 	}
+}
 
-	bool ok = solver.solveElipse(pts[0], pts[1], pts[2], pts[3], pts[4]);
+void testApp::mouseMoved( int x, int y ){
+	pts[0].x = x - ofGetWidth()/2;
+	pts[0].y = y - ofGetHeight()/2;
+};
+
+void testApp::draw(){
 
 	if (ok){
 
@@ -47,5 +51,6 @@ void testApp::draw(){
 		m1.draw();
 	}
 
+	ofSetupScreen();
 	ofDrawBitmapString("IsEllipse: " + ofToString(solver.getIsEllipse()) , 20, 20);
 }

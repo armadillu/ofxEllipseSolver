@@ -8,7 +8,10 @@ class testApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
-		
+		void mouseMoved( int x, int y );
+		void mousePressed( int x, int y, int button );
 
 		ofxEllipseSolver solver;
+		vector<ofVec2f> pts;
+		bool ok;
 };
