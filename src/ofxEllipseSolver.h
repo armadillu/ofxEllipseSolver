@@ -37,7 +37,6 @@ public:
 
 		int ok = toconic(pp0, pp1, pp2, pp3, pp4, &a, &b, &c, &d, &e, &f);
 		//printf("abcdef : %f %f %f %f %f %f \n", a, b, c, d, e, f );
-
 		return ok == 1;
 
 	}
@@ -54,9 +53,7 @@ public:
 
 		int ok = toconic(pp0, pp1, pp2, pp3, pp4, &a, &b, &c, &d, &e, &f);
 		//printf("abcdef : %f %f %f %f %f %f \n", a, b, c, d, e, f );
-
 		return ok == 1;
-		
 	}
 
 
@@ -77,10 +74,11 @@ public:
 		double x2 = r2 * cosf( angle );
 		double y2 = r2 * sinf( angle );
 
-		//printf("%f  -  %f \n",x,y);
+
 		if ( isnan(x2) || isnan(y2)){
 			return ofVec2f();
 		}
+		//printf("%f  -  %f (%f)\n",x2 ,y2, (float)angle);
 		return ofVec2f(x2, y2);
 	}
 
